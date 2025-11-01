@@ -43,7 +43,7 @@ Arrays.sort(numsWrapper, Collections.reverseOrder());
 
 ### B. `String` 배열 (Comparable이 이미 구현된 객체 배열)
 
-`String` 클래스는 이미 `Comparable` 인터페이스를 구현하고 있어 **사전순(오름차순)**으로 기본 정렬됩니다.
+`String` 클래스는 이미 `Comparable` 인터페이스를 구현하고 있어 사전순(오름차순)으로 기본 정렬.
 
 ```Java
 import java.util.Arrays;
