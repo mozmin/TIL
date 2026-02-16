@@ -65,9 +65,9 @@ public record AccommodationReviewCreateRequest(
 - **특징**: `static from()` 팩토리 메서드를 구현하여 Entity를 재료로 받아 DTO를 생성한다.
 - **패턴**: 필드 순서 실수를 방지하기 위해 `@Builder` 패턴 사용을 강력 권장한다.
 
-Java
+```Java
 
-`@Builder
+@Builder
 public record AccommodationReviewResponse(
     Long reviewId,
     String guestName,
@@ -88,7 +88,7 @@ public record AccommodationReviewResponse(
                 .build();
     }
 }`
-
+```
 
 ---
 
