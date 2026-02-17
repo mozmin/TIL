@@ -28,9 +28,9 @@ replace(), substring() 같은 메소드들은 문자열을 새로 생성 함.
 | 메소드 | 설명 | 코드 예시 | 코테 Tip |
 | :--- | :--- | :--- | :--- |
 | `String replace(CharSequence old, CharSequence new)` | 특정 문자(열)을 찾아 전부 **새로운 문자(열)로 교체**한 새 문자열을 반환합니다. | `String s = "hello"; String r = s.replace("l", "w"); // "hewwo"` | 특정 문자를 제거하고 싶을 때 `s.replace("a", "")` 와 같이 빈 문자열로 교체하는 트릭을 씁니다. |
-| `String replaceAll(String regex, String replacement)` | `replace`와 유사하지만, 첫 번째 인자로 **정규식(regex)**을 받습니다. | `String s = "a1b2c3d"; String r = s.replaceAll("[0-9]", "#"); // "a#b#c#d#"` | 숫자, 특수문자 등 복잡한 패턴을 한 번에 바꾸고 싶을 때 사용합니다. |
+| `String replaceAll(String regex, String replacement)` | `replace`와 유사하지만, 첫 번째 인자로 **정규식(regex)** 을 받습니다. | `String s = "a1b2c3d"; String r = s.replaceAll("[0-9]", "#"); // "a#b#c#d#"` | 숫자, 특수문자 등 복잡한 패턴을 한 번에 바꾸고 싶을 때 사용합니다. |
 | `String toLowerCase()` / `toUpperCase()` | 문자열 전체를 소문자 또는 대문자로 변경한 새 문자열을 반환합니다. | `String s = "Hello"; String l = s.toLowerCase(); // "hello"` | 대소문자를 구분하지 않는 비교를 할 때, 양쪽 모두 소문자(또는 대문자)로 바꿔서 비교합니다. |
-| `String trim()` | 문자열의 **앞뒤에 있는 공백(whitespace)을 모두 제거**한 새 문자열을 반환합니다. | `String s = "  hello  "; String t = s.trim(); // "hello"` | 사용자 입력을 받을 때 의도치 않은 공백이 포함될 수 있으므로, 처리 전에 `trim()`을 해주는 것이 안전합니다. |
+| `String trim()` | 문자열의 **앞뒤에 있는 공백(whitespace)을 모두 제거** 한 새 문자열을 반환합니다. | `String s = "  hello  "; String t = s.trim(); // "hello"` | 사용자 입력을 받을 때 의도치 않은 공백이 포함될 수 있으므로, 처리 전에 `trim()`을 해주는 것이 안전합니다. |
 
 ### 4. 문자열 분리 및 결합
 
@@ -41,7 +41,7 @@ replace(), substring() 같은 메소드들은 문자열을 새로 생성 함.
 
 ---
 
-### 🚀 성능 보너스 Tip: `+` 연산 대신 `StringBuilder` 사용하기
+### 성능 Tip: `+` 연산 대신 `StringBuilder` 사용하기
 
 `for`문 안에서 `String`을 `+` 연산자로 계속 이어 붙이면, 매번 새로운 `String` 객체가 생성되어 메모리와 속도에 매우 비효율적입니다. 문자열을 반복적으로 조립해야 할 때는 반드시 `StringBuilder`를 사용하는 습관을 들이는 것이 좋습니다.
 
