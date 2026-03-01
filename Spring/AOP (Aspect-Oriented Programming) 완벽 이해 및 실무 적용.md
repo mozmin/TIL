@@ -1,7 +1,7 @@
 # AOP (Aspect-Oriented Programming) 완벽 이해 및 실무 적용
 
 ## 1. AOP란 무엇인가?
-**AOP(관점 지향 프로그래밍)**는 애플리케이션의 핵심 비즈니스 로직과 공통 로직을 분리하여 모듈화하는 프로그래밍 기법이다.
+AOP(관점 지향 프로그래밍)는 애플리케이션의 핵심 비즈니스 로직과 공통 로직을 분리하여 모듈화하는 프로그래밍 기법이다.
 
 AOP를 사용하면 기존 비즈니스 로직을 전혀 수정하지 않고도, 외부에서 Proxy 객체를 통해 부가 기능을 앞뒤로 동적으로 끼워 넣을 수 있다.
 
@@ -26,7 +26,7 @@ public class LogisticsService {
     
     // 핵심 비즈니스 로직 (AOP 관련 코드는 단 한 줄도 없다!)
     public void processDelivery() {
-        System.out.println("📦 주문된 물건을 포장하고 출고를 준비합니다.");
+        System.out.println("주문된 물건을 포장하고 출고를 준비합니다.");
         try {
             Thread.sleep(1000); // 비즈니스 로직 처리에 1초 소요 가정
         } catch (InterruptedException e) {
@@ -54,14 +54,14 @@ public class PerformanceAspect {
         
         // --- Before: 원래 메서드 실행 전 ---
         long start = System.currentTimeMillis();
-        System.out.println("⏱️ [AOP] 바코드 스캔 및 작업 시작: " + joinPoint.getSignature().getName());
+        System.out.println("[AOP] 바코드 스캔 및 작업 시작: " + joinPoint.getSignature().getName());
 
         // --- 핵심 비즈니스 로직 실행 ---
         Object result = joinPoint.proceed(); 
 
         // --- After: 원래 메서드 실행 후 ---
         long end = System.currentTimeMillis();
-        System.out.println("⏱️ [AOP] 작업 완료! 소요 시간: " + (end - start) + "ms");
+        System.out.println("[AOP] 작업 완료! 소요 시간: " + (end - start) + "ms");
 
         return result;
     }
@@ -69,9 +69,9 @@ public class PerformanceAspect {
 ```
 
 ## 3. 실무 트러블슈팅: 내부 호출 문제
-초보 백엔드 개발자가 실무에서 AOP를 사용할 때 가장 많이 부딪히는 문제가 바로 **"어? 메서드에 AOP를 걸었는데 왜 작동을 안 하지?"**이다.
+초보 백엔드 개발자가 실무에서 AOP를 사용할 때 가장 많이 부딪히는 문제가 바로 "어? 메서드에 AOP를 걸었는데 왜 작동을 안 하지?"이다.
 
-이 문제는 스프링 AOP가 프록시(Proxy, 대리인) 기반으로 동작하기 때문에 발생한다.
+이 문제는 스프링 AOP가 Proxy 기반으로 동작하기 때문에 발생한다.
 
 ### 문제 상황 (AOP가 무시되는 경우)
 ```Java
@@ -93,7 +93,7 @@ public class LogisticsService {
 외부 컨트롤러에서 startWork()를 호출하면, 그 안에서 processDelivery()를 호출하더라도 AOP(시간 측정 로직)가 작동하지 않는다.
 
 ### 원인 파악
-스프링은 AOP를 적용할 때 진짜 객체 대신 **Proxy**을 앞에 세워둔다.
+스프링은 AOP를 적용할 때 진짜 객체 대신 **Proxy** 을 앞에 세워둔다.
 외부에서 접근할 때는 대리인을 거치기 때문에 부가 기능이 정상 작동하지만, 이미 진짜 객체 내부로 들어온 상태(startWork())에서 자기 자신의 다른 메서드(processDelivery())를 호출할 때는 대리인을 거치지 않고 직접 호출(this.processDelivery())해버리기 때문이다.
 
 ### 해결 방법
