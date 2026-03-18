@@ -1,4 +1,6 @@
-# 기본 규칙 (매우 중요)
+# 스텍과 큐 (ArrayDeque)
+
+# 기본 규칙
 
 - `add / remove / element` → 실패 시 **예외**
 - `offer / poll / peek` → 실패 시 **특수값**(`false` 또는 `null`)
