@@ -44,8 +44,8 @@ isEmpty(): 맵이 비어있는지 확인.
 size(): 맵에 저장된 키-값 쌍의 총 개수를 반환.
 
 ## 🔹 데이터 순회 (Iteration)
-```java
 1. keySet()을 이용한 키 순회 (값을 찾을 때 다시 get()을 호출해야 하므로 약간 느릴 수 있음)
+```java
 for (String key : map.keySet()) {
     System.out.println("Key: " + key + ", Value: " + map.get(key));
 }
