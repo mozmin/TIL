@@ -19,17 +19,17 @@
 HashMap<String, Integer> map = new HashMap<>();
 ```
 
-##🔹 데이터 추가 
+## 🔹 데이터 추가 
 put(K key, V value): 맵에 주어진 키와 값을 저장. 이미 존재하는 키라면 값을 덮어씀.
 
 putIfAbsent(K key, V value): 주어진 키가 맵에 없거나 매핑된 값이 null일 때만 데이터를 저장.
 
-##🔹 데이터 조회
+## 🔹 데이터 조회
 get(Object key): 주어진 키에 매핑된 값을 반환. 키가 없으면 null을 반환.
 
 getOrDefault(Object key, V defaultValue): 키가 존재하면 해당 값을 반환하고, 없으면 지정한 defaultValue를 반환. (코딩 테스트에서 빈도수 계산이나 누적합을 구할 때 매우 유용.)
 
-##🔹 데이터 삭제
+## 🔹 데이터 삭제
 remove(Object key): 특정 키와 그에 해당하는 값을 삭제.
 
 clear(): 맵에 있는 모든 데이터를 한 번에 삭제.
